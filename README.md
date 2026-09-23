@@ -4,12 +4,14 @@ Run CSV rows through [Jev](https://docs.typesafe.ai/) with YAML-defined question
 
 Licensed under the [Apache License, Version 2.0](LICENSE).
 
-Nim port of [jevvy](https://github.com/aboisvert/jevvy) (Scala). HTTP concurrency uses [asyncdispatch](https://nim-lang.org/docs/asyncdispatch.html); row state preparation uses [Malebolgia](https://github.com/Araq/malebolgia). Jev access is via [jev-nim-client](https://github.com/aboisvert/jev-nim-client).
-
 ## Usage Requirements
 
 - **`jevvy`** binary (build from source or a release artifact under `out/`)
-- **`TYPESAFE_API_KEY`** from your TypeSafe account
+- **`TYPESAFE_API_KEY`** from your [TypeSafe.ai](https://typesafe.ai) account
+
+## Download
+
+Download MacOS/Linux binaries from the [releases](releases) page.
 
 ## Quick Start
 
@@ -76,6 +78,12 @@ just example-lead-scoring
 - OpenSSL (`-d:ssl` for HTTPS)
 - **`TYPESAFE_API_KEY`**
 - **[just](https://github.com/casey/just)** (optional)
+
+## Major Dependencies
+
+- Jev access is via [jev-nim-client](https://github.com/aboisvert/jev-nim-client).
+- Parallelism from [Malebolgia](https://github.com/Araq/malebolgia).
+- HTTP concurrency uses [asyncdispatch](https://nim-lang.org/docs/asyncdispatch.html) through `jev-nim-client`
 
 ## Setup
 
