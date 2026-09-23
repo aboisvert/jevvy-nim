@@ -1,0 +1,14 @@
+# Lead scoring — score question (https://jevtypesafeai.com/use-cases)
+concurrency: 2
+
+questions:
+  - name: sales_readiness
+    type: score
+    question: How sales-ready is this inbound lead?
+    levels:
+      - label: cold
+        description: Low intent, vague interest, unlikely to buy soon
+      - label: warm
+        description: Real problem and budget signals, evaluating options
+      - label: hot
+        description: Strong fit, urgency, decision-maker engaged

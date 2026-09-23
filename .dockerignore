@@ -1,0 +1,7 @@
+deps/*
+!deps/atlas.config
+.git
+out/
+.nimcache/
+nimcache/
+.env

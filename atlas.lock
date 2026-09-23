@@ -1,0 +1,72 @@
+{
+  "items": {
+    "jev-nim-client": {
+      "dir": "$deps/jev_nim_client",
+      "url": "https://github.com/aboisvert/jev-nim-client",
+      "commit": "4fa211c2c98542ee926e68e8d2ba9342e07cf6d3",
+      "version": ""
+    },
+    "malebolgia": {
+      "dir": "$deps/malebolgia",
+      "url": "https://github.com/Araq/malebolgia",
+      "commit": "ab17bef08e8e84fabc33e0b039b324438e1ce27b",
+      "version": ""
+    },
+    "NimYAML": {
+      "dir": "$deps/yaml",
+      "url": "https://github.com/flyx/NimYAML",
+      "commit": "c38028a618815fa29cfc08b5fea16f8d262e5cf0",
+      "version": ""
+    },
+    "nim-results": {
+      "dir": "$deps/results",
+      "url": "https://github.com/arnetheduck/nim-results",
+      "commit": "df8113dda4c2d74d460a8fa98252b0b771bf1f27",
+      "version": ""
+    }
+  },
+  "nimcfg": [
+    "############# begin Atlas config section ##########",
+    "--noNimblePath",
+    "--path:\"deps/jev_nim_client/src\"",
+    "--path:\"deps/malebolgia/src\"",
+    "--path:\"deps/results\"",
+    "--path:\"deps/yaml\"",
+    "############# end Atlas config section   ##########",
+    ""
+  ],
+  "nimbleFile": {
+    "filename": "jevvy.nimble",
+    "content": [
+      "# Package",
+      "",
+      "version       = \"0.1.0\"",
+      "author        = \"Alex Boisvert\"",
+      "description   = \"Run CSV rows through Jev with YAML-defined questions\"",
+      "license       = \"Apache-2.0\"",
+      "srcDir        = \"src\"",
+      "bin           = @[\"jevvy\"]",
+      "",
+      "requires \"nim >= 2.2.12\"",
+      "requires \"https://github.com/aboisvert/jev-nim-client#head\"",
+      "requires \"https://github.com/Araq/malebolgia\"",
+      "requires \"yaml\"",
+      "requires \"results\"",
+      "",
+      "const nimFlags = \"-d:ssl --threads:on --path:src --path:tests\"",
+      "",
+      "task test, \"Run unit tests\":",
+      "  for t in [\"tests/tpaths\", \"tests/tconfig\", \"tests/tcsvio\", \"tests/tcolumns\", \"tests/trunner\"]:",
+      "    exec \"nim c -r \" & nimFlags & \" \" & t & \".nim\"",
+      "",
+      "task build, \"Build jevvy binary\":",
+      "  exec \"nim c -d:release \" & nimFlags & \" -o:out/jevvy src/jevvy.nim\"",
+      ""
+    ]
+  },
+  "hostOS": "macosx",
+  "hostCPU": "arm64",
+  "nimVersion": "2.2.12",
+  "gccVersion": "",
+  "clangVersion": ""
+}

@@ -1,0 +1,5 @@
+subject,body,customer_tier,channel
+Payouts failing again,"Help! My payouts have been failing for 3 days and support hasn't replied.",pro,email
+Cannot log in after SSO change,I reset my password but SSO still loops on the login page.,enterprise,chat
+Invoice total looks wrong,Our March invoice shows double the usual seat count. Can you fix the billing?,starter,email
+API 503 on production webhooks,Since yesterday every POST to our webhook endpoint returns 503 from your API.,pro,email

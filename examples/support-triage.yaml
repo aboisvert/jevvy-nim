@@ -1,0 +1,15 @@
+# Support triage — choice question (https://jevtypesafeai.com/use-cases)
+concurrency: 2
+delay_ms: 0
+
+questions:
+  - name: department
+    type: choice
+    question: Which team should handle this inbound support message?
+    options:
+      - id: billing
+        description: Payments, invoicing, refunds, payout failures
+      - id: technical
+        description: Bugs, outages, API errors, integrations
+      - id: account
+        description: Login, access, permissions, account settings

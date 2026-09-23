@@ -1,0 +1,15 @@
+deps/*
+!deps/atlas.config
+nimcache/
+out/
+.env
+.nimcache/
+
+# Extensionless files under src/ and test/ (e.g. nim build artifacts)
+src/**/*
+!src/**/
+!src/**/*.*
+
+test/**/*
+!test/**/
+!test/**/*.*

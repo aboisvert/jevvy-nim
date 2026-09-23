@@ -1,0 +1,7 @@
+# Content moderation — noul question (https://jevtypesafeai.com/use-cases)
+concurrency: 2
+
+questions:
+  - name: should_block
+    type: noul
+    question: Should this user-generated content be blocked before publication?
