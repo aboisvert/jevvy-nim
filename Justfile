@@ -10,8 +10,8 @@ default:
 nim_flags := "-d:ssl --threads:on --path:src"
 
 # Show CLI usage
-run:
-    nim r {{nim_flags}} src/jevvy.nim -- --help 2>&1 || nim r {{nim_flags}} src/jevvy.nim
+cli-help:
+    nim r {{nim_flags}} src/jevvy.nim -- --help 2>&1
 
 _run *ARGS:
     nim r {{nim_flags}} src/jevvy.nim -- {{ARGS}}
@@ -28,9 +28,11 @@ example-moderation:
 example-lead-scoring:
     just _run --config examples/lead-scoring.yaml --input examples/lead-scoring.csv --output /tmp/jevvy-lead-scoring-out.csv
 
+# Run tests
 test:
     nimble test
 
+# Build the CLI executable (release build)
 build:
     nim c -d:release {{nim_flags}} -o:out/jevvy src/jevvy.nim
 
@@ -97,6 +99,7 @@ _list-nim-executables $ROOT:
     done
   ' sh {} +
 
+# List all Nim executables in the project
 list-executables:
   #!/usr/bin/env sh
   set -eu
@@ -107,6 +110,7 @@ list-executables:
     find "$ROOT/out" -type f
   fi
 
+# Remove all Nim executables in the project
 rm-executables:
   #!/usr/bin/env sh
   just list-executables | xargs -I {} rm -f {}
