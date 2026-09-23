@@ -79,3 +79,34 @@ release:
 # Build Linux binary in Docker
 docker-linux-build:
     DOCKER_BUILDKIT=1 docker build --platform linux/amd64 -f docker/linux.Dockerfile -t jevvy-linux-build .
+
+
+_list-nim-executables $ROOT:
+  #!/usr/bin/env sh
+  set -eu
+  ROOT=${ROOT:-$(pwd)}
+  find "$ROOT" -type f -name '*.nim' -exec sh -c '
+    set +e
+    for f do
+      # check if .nim file has executable sibling (no extension)
+      base=$(basename "$f" .nim)
+      basepath=$(dirname "$f")
+      if [ -f "$basepath/$base" ]; then
+        printf "%s\n" "$basepath/$base"
+      fi
+    done
+  ' sh {} +
+
+list-executables:
+  #!/usr/bin/env sh
+  set -eu
+  ROOT=$(pwd)
+  just _list-nim-executables $ROOT/src/
+  just _list-nim-executables $ROOT/test/
+  if [ -d "$ROOT/out" ]; then
+    find "$ROOT/out" -type f
+  fi
+
+rm-executables:
+  #!/usr/bin/env sh
+  just list-executables | xargs -I {} rm -f {}
